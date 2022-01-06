@@ -14,4 +14,6 @@ except FileNotFoundError:
 	with webdriver.Firefox(executable_path = r'/opt/homebrew/bin/geckodriver') as driver:
 		c = auth.client_from_login_flow(driver, cf.api_key, cf.redirect_uri, cf.token_path)
 """
-print("test worked!")
+
+curr_client = f.login()
+print(f.get_all_positions(curr_client))
