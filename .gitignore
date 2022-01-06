@@ -5,6 +5,7 @@ __pycache__/
 
 # Code Files from the Repo:
 code/config.py
+code/token
 
 # C extensions
 *.so
