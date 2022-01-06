@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Code Files from the Repo:
+code/config.py
+
 # C extensions
 *.so
 
