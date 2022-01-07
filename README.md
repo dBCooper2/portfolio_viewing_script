@@ -3,7 +3,7 @@ A Script to view Stock Positions on TDAmeritrade through the Terminal
 
 Big Shoutouts to Alex Golec for writing the tda-api and its docs, I wouldn't be able to make this without him and the project's contributors
 
-**Some Notes: **
+**Some Notes: ** 
 - This is for use with Firefox, so the program uses geckodriver. For Chrome Users there is a chromedriver executable you can use instead, just make the necessary adjustments in the functions.py code and it'll work with another browser
 	
 - I installed the webdriver on my mac using Homebrew's 'brew install geckodriver' command, then got the path for the geckodriver using 'which geckodriver'. You can use this with bash to achieve the same results, unfortunately I don't know if the cmd or zsh terminals are similar to this.
