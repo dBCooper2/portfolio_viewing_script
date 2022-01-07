@@ -1,6 +1,7 @@
 # This will contain Function Definitions for Connecting to the TDA API
 import config as cf
 import json
+import httpx
 from tda import auth, client
 
 ##########################################################################################
@@ -22,6 +23,14 @@ def login():
 ##########################################################################################
 # Return all the Positions from an account as a String to Print in the Terminal
 def get_all_positions(c):
-	return "test works!"
+	# This line doesn't work
+	r = c.get_account(cf.td_acct_num, fields=c.Account.Fields.POSITIONS)
+	data = r.json()
+		
+	return to_string(data)
 	
+
+# Helper Method to Output the JSON as a String
+def to_string(obj):
+	pass	
 ##########################################################################################
