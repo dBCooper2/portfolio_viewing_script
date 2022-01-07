@@ -107,5 +107,5 @@ def convert_pos_dict_to_string(k):
 		else:
 			continue
 	
-	# now that those are done
+	# now that those are done figure out a good way to return these 
 ##########################################################################################
