@@ -3,6 +3,10 @@ A Script to view Stock Positions on TDAmeritrade through the Terminal
 
 Big Shoutouts to Alex Golec for writing the tda-api and its docs, I wouldn't be able to make this without him and the project's contributors
 
+# Necessary Libraries to Install:
+- tda-api (pip3 install tda-api)
+- selenium (pip3 install selenium)
+
 # Some Notes:
 - This is for use with Firefox, so the program uses geckodriver. For Chrome Users there is a chromedriver executable you can use instead, just make the necessary adjustments in the functions.py code and it'll work with another browser
 	
