@@ -1,8 +1,11 @@
 # This will contain Function Definitions for Connecting to the TDA API
+
+# Imports from my Own Files
 import config as cf
-import json
-import httpx
+
+# Imports from Other Libraries
 from tda import auth, client
+import json
 
 ##########################################################################################
 # Connect to the API and Login with a Token or create the Token
@@ -30,7 +33,11 @@ def get_all_positions(c):
 	return to_string(data)
 	
 
-# Helper Method to Output the JSON Dictionary as a Readable String
+# Helper Method to Output the JSON Dictionary as a Readable String in the terminal
+# 	The Dictionary will be printed as a table like this:
+#
+# (Name)	(Quantity)	(Price Bought)	(Current Price)	(Total Value)	(P/L %)
+# 	Val1		Val2		Val3			Val4				Val5	   Val6
 """
 1 - Check to be sure the obj is a dictionary
 2 - Loop through the first layer of the dict(securities)
@@ -60,6 +67,10 @@ def to_string(obj):
 				#print(j) # Delete Later
 				if j == 'positions':
 					print('Accessing Positions')
+					for k in obj[i][j]:
+						print(k) # Comment this out after
+						print('\n\n') # Comment this out after
+						
 				elif j == 'projectedBalances':
 					print('Accessing proj.Balances')
 				else:
