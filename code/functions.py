@@ -57,23 +57,55 @@ def get_all_positions(c):
 			- cashAvailableForWithdrawal
 """
 def to_string(obj):
+	final_table_str = ''
 	if type(obj) != dict:
-		print("Error! Object passed in was not a dictionary! Exiting...")
+		print('Error! Object passed in was not a dictionary! Exiting...')
 		exit()
 	else:
+		stock_positions = list()
+	
 		for i in obj.keys(): # Just the securities layer
 			#print(i) # Delete Later 
 			for j in obj[i].keys():
-				#print(j) # Delete Later
+				
+				# Accessing all the Positions in the Account:
 				if j == 'positions':
-					print('Accessing Positions')
+					
+					# Converting Each of the Positions to the Table Format
 					for k in obj[i][j]:
-						print(k) # Comment this out after
-						print('\n\n') # Comment this out after
-						
+						print(k)
+						print('\n\n\n')
+						convert_pos_dict_to_string(k)
+						print('\n\n\n')
+							
 				elif j == 'projectedBalances':
 					print('Accessing proj.Balances')
 				else:
 					continue
+	return final_table_str
 
+# Helper Method to Sort through the Position Dictionaries
+def convert_pos_dict_to_string(k):
+	for i in k.keys():
+		if i == 'averagePrice': # The price the shares were bought at
+			pass # access the key-value pair
+		elif i == 'longQuantity': # The number of Shares owned
+			pass # access the key-value pair
+		elif i == 'marketValue': # The total value of the Position
+			pass # access the key-value pair
+		elif i == 'instrument': # Get the name of the Position
+			for j in i.keys():
+				if j == 'symbol':
+					# access the symbol key-value pair
+				else:
+					continue
+			pass
+		elif i == 'currentDayProfitLoss': # P/L from the day
+			pass # access the key-value pair
+		elif i == 'currentDayProfitLossPercentage': # P/l % from the day
+			pass # access the key-value pair
+		else:
+			continue
+	
+	# now that those are done
 ##########################################################################################
