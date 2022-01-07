@@ -94,9 +94,9 @@ def convert_pos_dict_to_string(k):
 		elif i == 'marketValue': # The total value of the Position
 			pass # access the key-value pair
 		elif i == 'instrument': # Get the name of the Position
-			for j in i.keys():
+			for j in k[i].keys():
 				if j == 'symbol':
-					# access the symbol key-value pair
+					pass # access the symbol key-value pair
 				else:
 					continue
 			pass
