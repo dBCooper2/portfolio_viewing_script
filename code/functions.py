@@ -57,7 +57,7 @@ def get_all_positions(c):
 			- cashAvailableForWithdrawal
 """
 def to_string(obj):
-	final_table_str = ''
+	tot_string = ''
 	if type(obj) != dict:
 		print('Error! Object passed in was not a dictionary! Exiting...')
 		exit()
@@ -73,39 +73,52 @@ def to_string(obj):
 					
 					# Converting Each of the Positions to the Table Format
 					for k in obj[i][j]:
-						print(k)
-						print('\n\n\n')
-						convert_pos_dict_to_string(k)
-						print('\n\n\n')
-							
-				elif j == 'projectedBalances':
-					print('Accessing proj.Balances')
+						tot_string += convert_pos_dict_to_string(k)
+						tot_string += '\n\n'
 				else:
 					continue
-	return final_table_str
+		return tot_string
 
 # Helper Method to Sort through the Position Dictionaries
 def convert_pos_dict_to_string(k):
 	for i in k.keys():
 		if i == 'averagePrice': # The price the shares were bought at
-			pass # access the key-value pair
+			purchase_price = str(k[i])
+			
 		elif i == 'longQuantity': # The number of Shares owned
-			pass # access the key-value pair
+			num_shares = str(k[i])
+			
 		elif i == 'marketValue': # The total value of the Position
-			pass # access the key-value pair
+			tot_val = str(k[i])
+			
 		elif i == 'instrument': # Get the name of the Position
 			for j in k[i].keys():
 				if j == 'symbol':
-					pass # access the symbol key-value pair
+					symbol = str(k[i][j])
 				else:
 					continue
-			pass
+				
 		elif i == 'currentDayProfitLoss': # P/L from the day
-			pass # access the key-value pair
+			p_l_amt = str(k[i])
+		
 		elif i == 'currentDayProfitLossPercentage': # P/l % from the day
-			pass # access the key-value pair
+			p_l_percentage = str(k[i])
+		
 		else:
 			continue
 	
-	# now that those are done figure out a good way to return these 
+	# now that those are done figure out a good way to return these
+	try:
+		price_per_share = float(tot_val) / float(num_shares)
+	except:
+		print("Error! Total Value or the Number of Shares is NaN")
+		price_per_share = ''
+		
+	to_return = symbol + '\nCurr. Val: ' + str(price_per_share) + '\n'
+	to_return += '# of Shares: ' + num_shares + '\nTotal Value: ' + tot_val + '\n'
+	to_return += 'Bought At: ' + purchase_price + '\nP/L Amt.: ' + p_l_amt + '\n'
+	to_return += 'P/L %: ' + p_l_percentage
+	return to_return
+	
+	
 ##########################################################################################
