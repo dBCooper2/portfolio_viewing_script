@@ -9,6 +9,6 @@ elif cin == 'n' or cin == 'N' or cin == 'no' or cin == 'No' or cin == 'NO':
 	print('Ok! Just run ./stonks.sh from the root folder to view them!\n')
 	exit()
 else:
-	print("You can't answer a simple yes/no answer, you shouldn't be trading stocks!")
+	print("You can't answer a simple yes/no question, you shouldn't be trading stocks!")
 	exit()
 
