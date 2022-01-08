@@ -7,5 +7,3 @@ class Stock:
 		self.pp = pp # Purchase Price of the Shares
 		self.pla = pla # P/L Amount for the Day
 		self.plp = plp # P/L Percentage for the Day
-		
-	def get_stock_as_string()
