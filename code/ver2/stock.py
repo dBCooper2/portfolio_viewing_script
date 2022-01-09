@@ -42,7 +42,7 @@ class Stock:
 		return self.struct
 	
 	# Private Getters for the individual Values of the Stocks
-	def __get_symbol():
+	def get_symbol(): # Made Public for the sorting methods
 		return self.symbol
 	
 	def __get_pps():

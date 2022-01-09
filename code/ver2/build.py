@@ -3,3 +3,6 @@
 
 import stock as s
 import funcs as f
+
+curr_client = f.ff_login()
+f.get_all_positions(curr_client)

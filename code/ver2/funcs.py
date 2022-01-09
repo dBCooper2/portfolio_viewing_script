@@ -24,9 +24,30 @@ def ff_login():
 #	Figure out an elegant way to pass the files into the stock.py file!!!
 def get_account_positions(c):
 	r = c.get_account(cf.td_acct_num, fields=c.Account.Fields.POSITIONS)
-	data = r.json()
-	print(data)
+	data = r.json() # This is the raw json, the whole shebang
+	# Add something here to filter the data into just dict of the stock positions
+	positions = filter_positions(data)
+	# Add another method to get just the dict of the current balances
+	balances = filter_balances(data)
+	convert_positions_to_class(positions)
+	
+# Helper Method to take the big raw json and spit out just the positions
+def filter_positions(data):
+	pass
+	# Access the data['securities'] layer
+		# Access the data['positions'] layer and spit it out
+	return data['securities']['positions'] # Does this work?
+
+# Helper Method to take the big raw json and spit out just the current balances
+def filter_balances(data):
+	pass
+	return data['securities']['currentBalances']
 
 # Helper Method to Pass in Position jsons to the __init__() function of stock.py
-def convert_positions_to_class():
+def convert_positions_to_class(positions):
+	pass
+	
+	
+# Sort these Alphabetically
+def sort_stocks(stocks):
 	pass
