@@ -27,11 +27,11 @@ class Stock:
 		struct = {
 				'symbol':self.symbol,
 				'vals':
-					{ 'pps' : self.pps
-					  'ns'  : self.ns
-					  'tv'  : self.tv
-					  'pp'  : self.pp
-					  'pla' : self.pla
+					{ 'pps' : self.pps,
+					  'ns'  : self.ns,
+					  'tv'  : self.tv,
+					  'pp'  : self.pp,
+					  'pla' : self.pla,
 					  'plp' : self.plp
 					}
 				}

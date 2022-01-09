@@ -4,10 +4,17 @@ __pycache__/
 *$py.class
 
 # Code Files from the Repo:
+.DS_Store
+code/.DS_Store
+code/extras/.DS_Store
+
 code/ver1/config.py
 code/ver1/token
+code/ver1/__pycache__
+
 code/ver2/config.py
 code/ver2/token
+code/ver2/__pycache__
 
 # C extensions
 *.so
