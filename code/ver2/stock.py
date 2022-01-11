@@ -12,7 +12,7 @@
 # - pla: P/L Amount for the Day
 # - plp: P/L Percentage for the Day
 class Stock:
-	def __init__(symbol, pps, ns, tv, pp, pla, plp):
+	def __init__(self, symbol, pps, ns, tv, pp, pla, plp):
 		self.symbol = symbol
 		self.pps = pps
 		self.ns = ns 
@@ -20,10 +20,10 @@ class Stock:
 		self.pp = pp 
 		self.pla = pla 
 		self.plp = plp
-		self.struct = build_dict()
+		self.struct = self.build_dict()
 	
 	# Configure the Dictionary for Sorting the Stocks in the Main Program 
-	def build_dict():
+	def build_dict(self):
 		struct = {
 				'symbol':self.symbol,
 				'vals':
@@ -38,49 +38,69 @@ class Stock:
 		return struct
 	
 	# Public Getter to Access the Dictionary in the Main Program
-	def get_dict():
+	def get_dict(self):
 		return self.struct
+		
+	def to_string(self):
+		ret_string = ''
+		
+		ret_string += '\033[1;33m' + self.symbol
+		ret_string += '\033[0:37m' + '\nQuantity:\t' + '{:.0f}'.format(float(self.ns))
+		ret_string += '\033[0:37m' + '\tCurrent Price:\t' + '{:.2f}'.format(float(self.pps))
+		ret_string += '\033[0:37m' + '\nBought At:\t' + '{:.2f}'.format(float(self.pp))
+		ret_string += '\033[0:37m' + '\tTotal Value:\t' + '{:.2f}'.format(float(self.tv))
+		#Change Color to Green or Red Based on the P/L For the Day
+		if float(self.pla)>0: # Make Green
+			ret_string += '\nP/L Amount:\t' + '\033[0:32m' + '{:.2f}'.format(float(self.pla))
+			ret_string += '\033[0:37m\tP/L Percent:\t' + '\033[0:32m' + '{:.2f}'.format(float(self.plp))
+		elif float(self.pla)<0: # Make Red
+			ret_string += '\033[0:37m\nP/L Amount:\t' + '\033[0:31m' + '{:.2f}'.format(float(self.pla))
+			ret_string += '\033[0:37m\tP/L Percent:\t' + '\033[0:31m' + '{:.2f}'.format(float(self.plp))
+			
+		ret_string += ''
+		return ret_string
+		
 	
 	# Private Getters for the individual Values of the Stocks
-	def get_symbol(): # Made Public for the sorting methods
+	def get_symbol(self): # Made Public for the sorting methods
 		return self.symbol
 	
-	def __get_pps():
+	def __get_pps(self):
 		return self.pps
 	
-	def __get_ns():
+	def __get_ns(self):
 		return self.ns
 		
-	def __get_tv():
+	def __get_tv(self):
 		return self.tv
 	
-	def __get_pp():
+	def __get_pp(self):
 		return self.pp
 	
-	def __get_pla():
+	def __get_pla(self):
 		return self.pla
 	
-	def __get_plp():
+	def __get_plp(self):
 		return self.plp
 	
 	# Private Setters for the individual Values of the Stocks
-	def __set_symbol(symbol):
+	def __set_symbol(self, symbol):
 		self.symbol = symbol
 	
-	def __set_pps(pps):
+	def __set_pps(self, pps):
 		self.pps = pps
 	
-	def __set_ns(ns):
+	def __set_ns(self, ns):
 		self.ns = ns
 	
-	def __set_tv(tv):
+	def __set_tv(self, tv):
 		self.tv = tv
 	
-	def __set_pp(pp):
+	def __set_pp(self, pp):
 		self.pp = pp
 	
-	def __set_pla(pla):
+	def __set_pla(self, pla):
 		self.pla = pla
 	
-	def __set_plp(plp):
+	def __set_plp(self, plp):
 		self.plp = plp

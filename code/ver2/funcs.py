@@ -1,5 +1,6 @@
 # This contains the Main Functions for the Program to keep the Build.py file clean
 import config as cf
+import stock as s
 from tda import auth, client
 import json
 
@@ -13,28 +14,25 @@ def ff_login():
 			c = auth.client_from_login_flow(driver, cf.api_key, cf.redirect_uri, cf.token_path)
 			
 	return c
-	
-# Might add functionality for these, we'll see
-# def chrome_login():
-#	pass
-# def safari_login():
-#	pass
 
 # Function to call the tda_api's get_account() function
 #	Figure out an elegant way to pass the files into the stock.py file!!!
 def get_account_positions(c):
 	r = c.get_account(cf.td_acct_num, fields=c.Account.Fields.POSITIONS)
 	data = r.json() # This is the raw json, the whole shebang
-	print(data)
-	# Add something here to filter the data into just dict of the stock positions
+	
 	positions = filter_positions(data)
-	print('\n\n')
-	print(positions)
+	stock_list = convert_positions_to_class(positions)
+	
 	# Add another method to get just the dict of the current balances
 	balances = filter_balances(data)
-	print('\n\n')
-	print(balances)
-	convert_positions_to_class(positions)
+	
+	
+	for i in stock_list:
+		print(i.to_string())
+	
+	return
+	
 	
 # Helper Method to take the big raw json and spit out just the positions
 def filter_positions(data):
@@ -48,9 +46,22 @@ def filter_balances(data):
 
 # Helper Method to Pass in Position jsons to the __init__() function of stock.py
 def convert_positions_to_class(positions):
-	pass
+	positions_to_sort = []
 	
+	for i in positions:
+		if i['instrument']['symbol'] == 'MMDA1':
+			continue
+		else:
+			symbol = i['instrument']['symbol']
+			ns = i['longQuantity']
+			tv = i['marketValue']
+			pp = i['averagePrice']
+			pla = i['currentDayProfitLoss']
+			plp = i['currentDayProfitLossPercentage']
+			pps = str(float(tv)/float(ns))
+		
+			temp_obj = s.Stock(symbol, pps, ns, tv, pp, pla, plp)
+			positions_to_sort.append(temp_obj)
+			positions_to_return = sorted(positions_to_sort, key = lambda d: d.get_symbol())
 	
-# Sort these Alphabetically
-def sort_stocks(stocks):
-	pass
+	return positions_to_return
