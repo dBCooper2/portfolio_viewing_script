@@ -44,20 +44,24 @@ class Stock:
 	def to_string(self):
 		ret_string = ''
 		
-		ret_string += '\033[1;33m' + self.symbol
-		ret_string += '\033[0:37m' + '\nQuantity:\t' + '{:.0f}'.format(float(self.ns))
-		ret_string += '\033[0:37m' + '\tCurrent Price:\t' + '{:.2f}'.format(float(self.pps))
-		ret_string += '\033[0:37m' + '\nBought At:\t' + '{:.2f}'.format(float(self.pp))
-		ret_string += '\033[0:37m' + '\tTotal Value:\t' + '{:.2f}'.format(float(self.tv))
-		#Change Color to Green or Red Based on the P/L For the Day
-		if float(self.pla)>0: # Make Green
-			ret_string += '\nP/L Amount:\t' + '\033[0:32m' + '{:.2f}'.format(float(self.pla))
-			ret_string += '\033[0:37m\tP/L Percent:\t' + '\033[0:32m' + '{:.2f}'.format(float(self.plp))
-		elif float(self.pla)<0: # Make Red
-			ret_string += '\033[0:37m\nP/L Amount:\t' + '\033[0:31m' + '{:.2f}'.format(float(self.pla))
-			ret_string += '\033[0:37m\tP/L Percent:\t' + '\033[0:31m' + '{:.2f}'.format(float(self.plp))
+		ret_string += '\x1b[1;33m' + self.symbol
+		ret_string += '\x1b[0;37m\nQuantity:\t' + '{:.0f}'.format(self.ns)
+		ret_string += '\tCurrent Price:\t' + '{:.2f}'.format(float(self.pps))
+		ret_string += '\nBought At:\t' + '{:.2f}'.format(float(self.pp))
+		ret_string += '\tTotal Value:\t' + '{:.2f}'.format(float(self.tv))
+		
+		if self.pla > 0:
+			ret_string += '\nP/L Amount:\t\x1b[0;32m' + '{:.2f}'.format(float(self.pla))
+			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;32m' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
 			
-		ret_string += ''
+		elif self.pla < 0:
+			ret_string += '\nP/L Amount:\t\x1b[0;31m' + '{:.2f}'.format(float(self.pla))
+			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;31m' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
+			
+		else:
+			ret_string += '\nP/L Amount:\t' + '{:.2f}'.format(float(self.pla))
+			ret_string += '\tP/L Percent:\t' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
+			
 		return ret_string
 		
 	

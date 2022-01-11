@@ -23,13 +23,16 @@ def get_account_positions(c):
 	
 	positions = filter_positions(data)
 	stock_list = convert_positions_to_class(positions)
+	for i in stock_list:
+		print(i.to_string())
 	
 	# Add another method to get just the dict of the current balances
 	balances = filter_balances(data)
-	
-	
-	for i in stock_list:
-		print(i.to_string())
+	balance_str = ''
+	balance_str += '\x1b[3;37m\nTotal Market Value:\t' + str(balances['longMarketValue'])
+	balance_str += '\nAvailable Cash:\t' + str(balances['cashAvailableForTrading'])
+	balance_str += '\x1b[0;37m'
+	print(balance_str)
 	
 	return
 	
