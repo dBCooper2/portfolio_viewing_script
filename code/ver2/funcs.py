@@ -30,7 +30,7 @@ def get_account_positions(c):
 	balances = filter_balances(data)
 	balance_str = ''
 	balance_str += '\x1b[3;37m\nTotal Market Value:\t' + str(balances['longMarketValue'])
-	balance_str += '\nAvailable Cash:\t' + str(balances['cashAvailableForTrading'])
+	balance_str += '\nAvailable Cash:\t\t' + str(balances['cashAvailableForTrading'])
 	balance_str += '\x1b[0;37m'
 	print(balance_str)
 	
