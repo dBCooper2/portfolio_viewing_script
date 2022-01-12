@@ -52,15 +52,15 @@ class Stock:
 		
 		if self.pla > 0:
 			ret_string += '\nP/L Amount:\t\x1b[0;32m' + '{:.2f}'.format(float(self.pla))
-			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;32m' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
+			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;32m' + '{:.2f}'.format(float(self.plp)) + '%\x1b[0;37m'
 			
 		elif self.pla < 0:
 			ret_string += '\nP/L Amount:\t\x1b[0;31m' + '{:.2f}'.format(float(self.pla))
-			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;31m' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
+			ret_string += '\x1b[0;37m\tP/L Percent:\t\x1b[0;31m' + '{:.2f}'.format(float(self.plp)) + '%\x1b[0;37m'
 			
 		else:
 			ret_string += '\nP/L Amount:\t' + '{:.2f}'.format(float(self.pla))
-			ret_string += '\tP/L Percent:\t' + '{:.2f}'.format(float(self.plp)) + '\x1b[0;37m'
+			ret_string += '\tP/L Percent:\t' + '{:.2f}'.format(float(self.plp)) + '%\x1b[0;37m'
 			
 		return ret_string
 		
